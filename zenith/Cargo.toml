@@ -1,0 +1,19 @@
+[package]
+name = "zenith"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+path = "lib.rs"
+
+[dependencies]
+macros-zenith = { path = "../macros/zenith" }
+
+smol = "1"
+libc = "0.2"
+
+log = "0.4"
+yansi = "0.5"
+
+thiserror = "1"
+anyhow = "1"
