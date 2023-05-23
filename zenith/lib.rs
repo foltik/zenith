@@ -1,19 +1,11 @@
 #![feature(async_closure)]
 
-pub use macros_zenith::main;
-
-mod bridge;
-
-pub mod log;
-
-mod error;
-pub use error::{Error, Result};
-
-pub async fn init() -> Result<()> {
-    log::init();
-    bridge::init().await?;
-    Ok(())
-}
-
+#[cfg(feature = "bin")]
 #[doc(hidden)]
-pub use smol;
+pub mod bin;
+
+#[cfg(feature = "bin")]
+pub use bin::main;
+
+#[cfg(feature = "bin")]
+pub use clap;

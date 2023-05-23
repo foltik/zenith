@@ -1,0 +1,15 @@
+[package]
+name = "navi"
+authors.workspace = true
+version.workspace = true
+edition.workspace = true
+
+[[bin]]
+name = "navi"
+path = "main.rs"
+
+[dependencies]
+zenith = { workspace = true, features = ["bin"] }
+substrate = { workspace = true }
+
+x11rb = "0.11"

@@ -1,15 +1,20 @@
+[workspace.package]
+authors = ["Jack Foltz"]
+version = "0.1.0"
+edition = "2021"
+
 [workspace]
 members = [
+    #
     "./zenith",
-
-    "./macros",
-    "./macros/zenith",
-
-    "./data",
-    "./data/system",
-
-    "./tests/hello",
+    "./substrate",
+    "./navi",
 ]
+
+[workspace.dependencies]
+zenith = { path = "./zenith" }
+substrate = { path = "./substrate" }
+navi = { path = "./navi" }
 
 [profile.dev]
 opt-level = 1

@@ -1,19 +1,24 @@
 [package]
 name = "zenith"
-version = "0.1.0"
-edition = "2021"
+authors.workspace = true
+version.workspace = true
+edition.workspace = true
 
 [lib]
 path = "lib.rs"
 
+[features]
+bin = [
+    "dep:zenith-macros",
+    "dep:substrate",
+    "substrate/log",
+    "dep:clap",
+    "dep:smol",
+]
+
 [dependencies]
-macros-zenith = { path = "../macros/zenith" }
-
-smol = "1"
-libc = "0.2"
-
-log = "0.4"
-yansi = "0.5"
-
-thiserror = "1"
-anyhow = "1"
+# bin
+zenith-macros = { path = "./macros", optional = true }
+substrate = { workspace = true, optional = true }
+clap = { version = "4", features = ["derive"], optional = true }
+smol = { version = "1", optional = true }
