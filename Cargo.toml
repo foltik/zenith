@@ -7,13 +7,15 @@ edition = "2021"
 members = [
     #
     "./zenith",
-    "./substrate",
+    "./stud",
     "./navi",
+
+    "./tests/chat",
 ]
 
 [workspace.dependencies]
 zenith = { path = "./zenith" }
-substrate = { path = "./substrate" }
+stud = { path = "./stud" }
 navi = { path = "./navi" }
 
 [profile.dev]
@@ -21,3 +23,6 @@ opt-level = 1
 
 [profile.dev.package."*"]
 opt-level = 3
+
+[profile.release]
+debug = true

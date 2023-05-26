@@ -10,6 +10,6 @@ path = "main.rs"
 
 [dependencies]
 zenith = { workspace = true, features = ["bin"] }
-substrate = { workspace = true }
+stud = { workspace = true, features = ["error", "log", "args"] }
 
 x11rb = "0.11"

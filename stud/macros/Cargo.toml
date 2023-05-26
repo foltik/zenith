@@ -1,5 +1,5 @@
 [package]
-name = "zenith-macros"
+name = "stud-macros"
 authors.workspace = true
 version.workspace = true
 edition.workspace = true
@@ -8,8 +8,11 @@ edition.workspace = true
 proc-macro = true
 path = "lib.rs"
 
+[features]
+args = []
+
 [dependencies]
-stud = { workspace = true, features = ["bigmac"] }
+bigmacs = { path = "../bigmacs" }
 
 proc-macro2 = "1"
 quote = "1"

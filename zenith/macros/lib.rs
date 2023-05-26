@@ -5,7 +5,7 @@ use syn::parse::Parser;
 use syn::punctuated::Punctuated;
 use syn::{parse_quote, ItemFn, Meta, Result, Type};
 
-use substrate::macros::{bail, error, expand};
+use stud::bigmac::{bail, error, expand};
 
 #[proc_macro_attribute]
 pub fn main(args: TokenStream, item: TokenStream) -> TokenStream {
@@ -30,8 +30,7 @@ fn _main(args: TokenStream2, item: TokenStream2) -> Result<TokenStream2> {
         syn::ReturnType::Default => bail!(main.sig.output.span(), INVALID),
         syn::ReturnType::Type(_, ty) => match &**ty {
             Type::Path(path)
-                if *path == parse_quote!(Result<()>)
-                    || *path == parse_quote!(zenith::Result<()>) => {}
+                if *path == parse_quote!(Result<()>) || *path == parse_quote!(Result<()>) => {}
             _ => bail!(ty.span(), INVALID),
         },
     }
@@ -62,12 +61,12 @@ fn _main(args: TokenStream2, item: TokenStream2) -> Result<TokenStream2> {
 
     Ok(quote! {
         #main
-        async fn _main() -> std::result::Result<(), Box<dyn std::error::Error>> {
+        async fn _main() -> zenith::bin::Result<()> {
             #init
             Ok(())
         }
-        fn main() -> std::result::Result<(), Box<dyn std::error::Error>> {
-            zenith::bin::smol::block_on(_main())
+        fn main() -> zenith::bin::Result<()> {
+            zenith::bin::run(_main())
         }
     })
 }

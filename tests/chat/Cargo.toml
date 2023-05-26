@@ -1,0 +1,16 @@
+[package]
+name = "test-chat"
+authors.workspace = true
+version.workspace = true
+edition.workspace = true
+
+[[bin]]
+name = "test-chat"
+path = "chat.rs"
+
+[dependencies]
+stud = { path = "../../stud", features = ["error", "log", "args"] }
+zenith = { path = "../../zenith", features = ["bin"] }
+
+socket2 = "0.5"
+tokio = { version = "1", features = ["full"] }

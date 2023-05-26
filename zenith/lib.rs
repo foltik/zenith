@@ -6,6 +6,3 @@ pub mod bin;
 
 #[cfg(feature = "bin")]
 pub use bin::main;
-
-#[cfg(feature = "bin")]
-pub use clap;
