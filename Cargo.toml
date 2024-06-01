@@ -1,0 +1,10 @@
+[package]
+name = "zenith"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "z"
+path = "src/main.rs"
+
+[dependencies]
