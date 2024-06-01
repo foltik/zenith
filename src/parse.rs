@@ -52,6 +52,14 @@ pub fn op(s: &[u8]) -> Op {
     match s {
         b"mov" => Op::Mov,
         b"syscall" => Op::Syscall,
+        s if s.len() == 2 && s[0] == b'd' => match s[1] {
+            b'b' => Op::Data(Size::Byte),
+            b'w' => Op::Data(Size::Word),
+            b'd' => Op::Data(Size::Long),
+            b'q' => Op::Data(Size::Quad),
+            b's' => Op::DataString,
+            _ => panic!("invalid data"),
+        },
         _ => panic!("invalid op"),
     }
 }

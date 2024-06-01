@@ -2,6 +2,10 @@
 pub enum Op {
     Mov,
     Syscall,
+
+    // Intrinsics
+    Data(Size),
+    DataString,
 }
 
 #[derive(Debug, Clone, Copy)]
